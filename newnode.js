@@ -6,7 +6,7 @@ const lodash = require("lodash");
 const iconv = require("iconv-lite");
 let result = []
 csv()
-    .fromFile("./6-7月订单.csv")
+    .fromFile("./67月订单.csv")
     .then((order) => {
         order.forEach((item) => {
             //.replace(",",'')
@@ -15,7 +15,6 @@ csv()
         csv()
             .fromFile("./抖音7月结算.csv")
             .then((json) => {
-
                 let data = [];
                 json.forEach((res)=>{
                     result.forEach((item,index) => {

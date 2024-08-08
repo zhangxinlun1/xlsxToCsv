@@ -20,11 +20,11 @@ csv()
             Result.push(result);
         });
         csv()
-            .fromFile("./7月京东订单.csv")
+            .fromFile("./7月淘宝订单.csv")
             .then((json) => {
                 let data = [];
                 json.map((item,itemIndex) => {
-                    let itemResult = moment(item.下单时间).unix();
+                    let itemResult = moment(item.创建时间).unix();
                     let username = "未知";
                     let dbo = "";
                     let min;
@@ -47,10 +47,10 @@ csv()
                         }
                     });
 
-                    data.push({下单时间: item.下单时间, 运营: dbo, username, ...item});
+                    data.push({创建时间: item.创建时间, 运营: dbo, username, ...item});
                 })
                 data = toGbkCsv(data)
-                fs.writeFileSync("./7月京东完整订单结果.csv", data, 'binary');
+                fs.writeFileSync("./7月淘宝完整订单结果.csv", data, 'binary');
             });
     });
 
